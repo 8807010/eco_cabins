@@ -1,0 +1,9 @@
+.title {
+  font-family: Merriweather;
+  color: #fff;
+  line-height: 130%;
+  font-size: 1.875rem;
+}
+.title--dark {
+  color: #222f33;
+}

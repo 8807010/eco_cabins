@@ -14,9 +14,15 @@
 	@return $result;
 }
 //REM
-@function rem($px) {
-	$result: math.div($px, 16) + rem;
-	@return $result;
+// @function rem($px) {
+// 	$result: math.div($px, 16) + "rem";
+// 	@return $result;
+// }
+
+
+@function toRem($px) {
+  $result: #{math.div($px, 16)}rem;
+  @return $result;
 }
 //EM
 @function em($px, $current: 16) {

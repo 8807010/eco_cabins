@@ -1,1 +1,12 @@
 // Заголовки, загальні БЕМ блоки та інше...
+.title {
+  font-family: Merriweather;
+  color: #fff;
+  line-height: 130%;
+  font-size: 1.875rem;
+
+  &--dark {
+    color: #222f33;
+  }
+}
+
