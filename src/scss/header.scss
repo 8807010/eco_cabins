@@ -6,6 +6,8 @@
   top: 0;
   z-index: 50;
 
+  &._header-scroll {}
+
   &::before {
     content: '';
     position: absolute;
