@@ -279,3 +279,20 @@
     transform: translate(0, 0);
   }
 }
+.inovate {
+  background-color: #222f33;
+  padding: 70px 0px 80px 0px;
+}
+@media (max-width: 47.9988em) {
+  .inovate {
+    padding: 1.875rem 0px;
+  }
+}
+.inovate__title:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+.inovate__text {
+  color: #fff;
+  columns: 2 15.625rem;
+  gap: 2.6875rem;
+}
