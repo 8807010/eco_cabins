@@ -1,3 +1,55 @@
-//====================================================================================================
+.footer {
+  background-color: #222f33;
+  padding-top: 2.0625rem;
+  padding-bottom: 2.0625rem;
 
-//====================================================================================================
+  &__container {
+    display: grid;
+    column-gap: 0.9375rem;
+    row-gap: 20px;
+    color: #fff;
+    align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+
+    @media (max-width: 37.5em) {
+      grid-template-columns: auto;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+
+  &__mail {
+    font-size: 0.75rem;
+    font-weight: 500;
+    opacity: 0.6;
+
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__logo {
+    justify-self: center;
+  }
+}
+
+.menu-footer {
+  justify-self: end;
+  display: flex;
+  gap: 1.875rem;
+  align-items: center;
+  opacity: 0.6;
+
+  &__link {
+    font-size: 0.75rem;
+    font-weight: 500;
+
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
