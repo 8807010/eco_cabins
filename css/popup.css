@@ -28,14 +28,6 @@ body::after {
   pointer-events: none;
 }
 
-.popup__title {
-  color: #fff;
-  font-size: 30px;
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 15px;
-}
-
 .popup_show {
   z-index: 150;
   visibility: visible;
@@ -70,55 +62,49 @@ body::after {
   padding: 15px;
   position: relative;
   border-radius: 8px;
-  box-shadow: 4px 6px 32px 0 rgba(0, 0, 0, .5);
-  background-color: $mainColor;
-
-  .lock & {
-    visibility: visible;
-  }
+  box-shadow: 4px 6px 32px 0 rgba(0, 0, 0, 0.5);
+}
+.lock .popup__content {
+  visibility: visible;
 }
 
 .popup__text {
   position: relative;
   padding-top: 50px;
   padding-bottom: percent(239, 424);
-
-  iframe {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    object-fit: cover;
-  }
+}
+.popup__text iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
 }
 
 .popup__close {
   z-index: 5;
   background-color: transparent;
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 0;
+  right: 0;
   width: toRem(30);
   height: toRem(30);
+  background-color: #000;
   border-radius: 50%;
-
-  &::before,
-  &::after {
-    content: "";
-    width: 100%;
-    position: absolute;
-    height: toRem(2);
-    background-color: #fff;
-    top: 50%;
-    left: 0;
-  }
-
-  &::before {
-    transform: rotate(-45deg);
-  }
-
-  &::after {
-    transform: rotate(45deg);
-  }
+}
+.popup__close::before, .popup__close::after {
+  content: "";
+  width: 100%;
+  position: absolute;
+  height: toRem(2);
+  background-color: #fff;
+  top: 50%;
+  left: 0;
+}
+.popup__close::before {
+  transform: rotate(-45deg);
+}
+.popup__close::after {
+  transform: rotate(45deg);
 }

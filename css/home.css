@@ -36,6 +36,13 @@
   color: #fff;
   font-size: 0.75rem;
   font-weight: 500;
+  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+@media (any-hover: hover) {
+  .main-section__video-link:hover {
+    background-color: #4c5456;
+    opacity: 0.3;
+  }
 }
 .main-section__video-link::before {
   content: "";

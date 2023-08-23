@@ -40,6 +40,17 @@
     color: #fff;
     font-size: 0.75rem;
     font-weight: 500;
+    transition: opacity .3s ease-in-out, background-color .3s ease-in-out;
+    padding: 0.9375rem;
+    border-radius: 0.625rem;
+    width: max-content;
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: $mainColor;
+        opacity: 0.6;
+      }
+    }
 
     &::before {
       content: '';
