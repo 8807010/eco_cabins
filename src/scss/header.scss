@@ -54,8 +54,7 @@
 
     @media (any-hover: hover) {
       &:hover {
-        background-color: #333;
-        color: #fff;
+        background-color: #d6d6d6c1;
       }
     }
   }
@@ -73,8 +72,27 @@
     font-weight: 500;
   }
 
-  &__link:hover {
-    text-decoration: underline;
+  &__item {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      margin-top: 3px;
+      background-color: #fff;
+      height: 2px;
+      width: 0%;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: width .3s ease-in-out;
+    }
+
+    @media (any-hover: hover) {
+      &:hover::after {
+        width: 100%;
+      }
+    }
   }
 }
 
@@ -139,8 +157,6 @@
         right: 0;
       }
     }
-
-
   }
 }
 

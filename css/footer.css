@@ -22,10 +22,24 @@
   font-size: 0.75rem;
   font-weight: 500;
   opacity: 0.6;
+  position: relative;
+  width: max-content;
+}
+.footer__mail::after {
+  content: "";
+  position: absolute;
+  display: block;
+  margin-top: 3px;
+  background-color: #fff;
+  height: 2px;
+  width: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 0.3s ease-in-out;
 }
 @media (any-hover: hover) {
-  .footer__mail:hover {
-    text-decoration: underline;
+  .footer__mail:hover::after {
+    width: 100%;
   }
 }
 .footer__logo {
@@ -42,9 +56,22 @@
 .menu-footer__link {
   font-size: 0.75rem;
   font-weight: 500;
+  position: relative;
+}
+.menu-footer__link::after {
+  content: "";
+  position: absolute;
+  display: block;
+  margin-top: 3px;
+  background-color: #fff;
+  height: 2px;
+  width: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 0.3s ease-in-out;
 }
 @media (any-hover: hover) {
-  .menu-footer__link:hover {
-    text-decoration: underline;
+  .menu-footer__link:hover::after {
+    width: 100%;
   }
 }

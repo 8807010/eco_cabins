@@ -22,10 +22,25 @@
     font-size: 0.75rem;
     font-weight: 500;
     opacity: 0.6;
+    position: relative;
+    width: max-content;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      margin-top: 3px;
+      background-color: #fff;
+      height: 2px;
+      width: 0%;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: width .3s ease-in-out;
+    }
 
     @media (any-hover: hover) {
-      &:hover {
-        text-decoration: underline;
+      &:hover::after {
+        width: 100%;
       }
     }
   }
@@ -45,10 +60,24 @@
   &__link {
     font-size: 0.75rem;
     font-weight: 500;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      margin-top: 3px;
+      background-color: #fff;
+      height: 2px;
+      width: 0%;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: width .3s ease-in-out;
+    }
 
     @media (any-hover: hover) {
-      &:hover {
-        text-decoration: underline;
+      &:hover::after {
+        width: 100%;
       }
     }
   }
