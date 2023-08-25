@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>EcoCabins</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20230825215126">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<!-- Стилі для body -->
+<style>
+	.lock body {
+		overflow: hidden;
+		touch-action: none;
+		overscroll-behavior: none;
+	}
+
+	.loading body {
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	.loaded body {
+		transition: opacity 0.5s ease 0s;
+		opacity: 1;
+		visibility: visible;
+	}
+</style>
+<div id="fls-preloader" data-preloader>
+	<!-- Документація: https://template.fls.guru/template-docs/modul-preloader.html -->
+	<!-- Стилі для прелоадера -->
+	<style>
+		* {
+			padding: 0px;
+			margin: 0px;
+			border: 0px;
+		}
+
+		*,
+		*:before,
+		*:after {
+			box-sizing: border-box;
+		}
+
+		html {
+			overflow: hidden;
+			touch-action: none;
+			overscroll-behavior: none;
+		}
+
+		/* Головний блок */
+		.fls-preloader {
+			pointer-events: none;
+			z-index: -1;
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		/* Блок з елементами */
+		.fls-preloader__body {
+			padding: 0.93rem;
+			max-width: 31.25rem;
+			display: flex;
+			flex-direction: column;
+		}
+
+		/* Блок з лічильником */
+		.fls-preloader__counter {
+			font-size: 10rem;
+		}
+
+		/* Прогресбар */
+		.fls-preloader__line {}
+
+		/* Лінія прогресбару */
+		.fls-preloader__line span {
+			display: inline-block;
+			transition: width 0.2s ease;
+			height: 0.8rem;
+			background-color: #7A956B;
+		}
+	</style>
+	<!-- Скріпт прелоадера -->
+	<script>
+		function preloader() {
+			const preloaderImages = document.querySelector('[data-preloader]') ? document.querySelectorAll(
+				'[data-preloader] img') : document.querySelectorAll('img');
+			const preloaderContainer = document.querySelector('#fls-preloader');
+			if (preloaderImages.length) {
+				const preloaderTemplate = `
+					<div class="fls-preloader">
+						<div class="fls-preloader__body">
+							<div class="fls-preloader__counter">0%</div>
+							<div class="fls-preloader__line"><span></span></div>
+						</div>
+					</div>`;
+				document.querySelector('html').insertAdjacentHTML("beforeend", preloaderTemplate);
+
+				const
+					preloader = document.querySelector('.fls-preloader'),
+					showPecentLoad = document.querySelector('.fls-preloader__counter'),
+					showLineLoad = document.querySelector('.fls-preloader__line span'),
+					htmlDocument = document.documentElement;
+
+				let imagesLoadedCount = counter = progress = 0;
+
+				htmlDocument.classList.add('loading');
+				htmlDocument.classList.add('lock');
+
+				preloaderImages.forEach(preloaderImage => {
+					const imgClone = document.createElement('img');
+					if (imgClone) {
+						imgClone.onload = imageLoaded;
+						imgClone.onerror = imageLoaded;
+						preloaderImage.dataset.src ? imgClone.src = preloaderImage.dataset.src : imgClone.src = preloaderImage
+							.src;
+					}
+				});
+
+				function setValueProgress(progress) {
+					showPecentLoad ? showPecentLoad.innerText = `${progress}%` : null;
+					showLineLoad ? showLineLoad.style.width = `${progress}%` : null;
+				}
+				showPecentLoad ? setValueProgress(progress) : null;
+
+				function imageLoaded() {
+					imagesLoadedCount++;
+					progress = Math.round((100 / preloaderImages.length) * imagesLoadedCount);
+					const intervalId = setInterval(() => {
+						counter >= progress ? clearInterval(intervalId) : setValueProgress(++counter);
+						counter >= 100 ? addLoadedClass() : null;
+					}, 10);
+				}
+
+				function addLoadedClass() {
+					htmlDocument.classList.add('loaded');
+					htmlDocument.classList.remove('lock');
+					htmlDocument.classList.remove('loading');
+					setInterval(() => {
+						preloader.remove();
+						preloaderContainer.remove();
+					}, 500);
+				}
+			} else {
+				preloaderContainer.remove();
+			}
+		}
+		preloader();
+	</script>
+</div>
+
+
+<body>
+	<div class="wrapper">
+		<header data-scroll-show class="header">
+			<div class="header__container">
+				<div class="header__logo">
+					<img src="img/logo.svg" alt="Logo">
+				</div>
+				<div class="header__body">
+					<nav class="header__menu menu">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="#" class="menu__link">Modellen</a>
+							</li>
+							<li class="menu__item">
+								<a href="#" class="menu__link">Kopen</a>
+							</li>
+							<li class="menu__item">
+								<a href="#" class="menu__link">Huren</a>
+							</li>
+							<li class="menu__item">
+								<a href="#" class="menu__link">Nieuws</a>
+							</li>
+						</ul>
+					</nav>
+					<button class="header__button" type="button">Contact</button>
+					<button type="button" class="menu__icon icon-menu"><span></span></button>
+				</div>
+			</div>
+		</header>
+
+		<main class="page">
+			<section class="page__main main-section">
+				<div class="main-section__container">
+					<div class="main-section__content">
+						<div class="main-section__label">Duurzame tiny huisjes</div>
+						<h1 class="main-section__title title">Een ecologisch tiny huisje is zoveel mogelijk opgebouwd uit duurzame
+							natuurlijke materialen</h1>
+					</div>
+					<a href="#" data-popup="#video" data-popup-youtube="4G-KVb05YCc" class="main-section__video-link">Bekijk de
+						film</a>
+				</div>
+				<div class="main-section__image">
+					<picture><source srcset="img/main/bg.webp" type="image/webp"><img src="img/main/bg.jpg" alt="Bg"></picture>
+				</div>
+			</section>
+
+			<section class="page__materials materials">
+				<div class="materials__container">
+					<div class="materials__content">
+						<h2 class="materials__title title title--dark">Duurzame materialen</h2>
+						<div class="materials__text text">
+							<p>Alle EcoCabins hebben een hoge isolatiewaarde, worden geproduceerd met indien mogelijk duurzame en/of
+								natuurlijke materialen en hebben als opvallende uiterlijke kenmerk de ‘ronde hoeken’, mogelijk gemaakt
+								door het specifieke materiaalgebruik. De voordelen van bouwen met hout zijn legio: hout is licht,
+								flexibel, isoleert goed en bouwt snel en efficiënt.</p>
+						</div>
+						<a href="#" class="materials__more">Lees meer</a>
+					</div>
+					<div class="materials__slider slider-materials swiper">
+						<!-- Additional required wrapper -->
+						<div class="slider-materials__wrapper swiper-wrapper">
+							<!-- Slides -->
+							<div class="slider-materials__slide swiper-slide">
+								<picture><source srcset="img/materials/01.webp" type="image/webp"><img src="img/materials/01.jpg" alt="Image"></picture>
+							</div>
+							<div class="slider-materials__slide swiper-slide">
+								<picture><source srcset="img/materials/02.webp" type="image/webp"><img src="img/materials/02.jpg" alt="Image"></picture>
+							</div>
+							<div class="slider-materials__slide swiper-slide">
+								<picture><source srcset="img/materials/03.webp" type="image/webp"><img src="img/materials/03.jpg" alt="Image"></picture>
+							</div>
+							<div class="slider-materials__slide swiper-slide">
+								<picture><source srcset="img/materials/04.webp" type="image/webp"><img src="img/materials/04.jpg" alt="Image"></picture>
+							</div>
+						</div>
+						<!-- If we need pagination -->
+						<div class="slider-materials__pagination swiper-pagination"></div>
+					</div>
+				</div>
+			</section>
+
+			<section class="page__inovate inovate">
+				<div class="inovate__container">
+					<h2 class="inovate__title title">Innovatie</h2>
+					<div class="inovate__text text">
+						<p>Wij hebben als doel om de EcoCabins voortdurend verder te ontwikkelen en innoveren, zodat de EcoCabins
+							uiteindelijk 100% duurzaam en circulair zijn. Voorwaarde hierbij is dat de EcoCabins betaalbaar blijven.
+							Met behulp van de zon, de wind en de beste isolatie geniet u van.</p>
+						<p>Alle EcoCabins hebben een hoge isolatiewaarde, worden geproduceerd met indien mogelijk duurzame en/of
+							natuurlijke materialen en hebben als opvallende uiterlijke kenmerk de ‘ronde hoeken’, mogelijk gemaakt
+							door het specifieke materiaalgebruik De voordelen van bouwen.</p>
+					</div>
+				</div>
+			</section>
+
+			<div class="page__info info">
+				<div class="info__container">
+					<div class="info__image">
+						<picture><source srcset="img/inovate/inovate.webp" type="image/webp"><img src="img/inovate/inovate.jpg" alt="Image"></picture>
+					</div>
+					<div class="info__content">
+						<article class="info__item">
+							<h4 class="info__title">Hout</h4>
+							<div class="info__text text">
+								<p>De draagconstructies van EcoCabins bestaan uit hout. Hout is duurzaam en.s</p>
+							</div>
+						</article>
+						<article class="info__item">
+							<h4 class="info__title">Hout</h4>
+							<div class="info__text text">
+								<p>De draagconstructies van EcoCabins bestaan uit hout. Hout is duurzaam en.s</p>
+							</div>
+						</article>
+						<article class="info__item">
+							<h4 class="info__title">Afwerking</h4>
+							<div class="info__text text">
+								<p>De draagconstructies van EcoCabins bestaan uit hout. Hout is duurzaam en.s</p>
+							</div>
+						</article>
+						<article class="info__item">
+							<h4 class="info__title">Triple glas</h4>
+							<div class="info__text text">
+								<p>De draagconstructies van EcoCabins bestaan uit hout. Hout is duurzaam en.s</p>
+							</div>
+						</article>
+						<article class="info__item">
+							<h4 class="info__title">Stalen onderstel</h4>
+							<div class="info__text text">
+								<p>De draagconstructies van EcoCabins bestaan uit hout. Hout is duurzaam en.s</p>
+							</div>
+						</article>
+						<article class="info__item">
+							<h4 class="info__title">Infrarood vloer</h4>
+							<div class="info__text text">
+								<p>De draagconstructies van EcoCabins bestaan uit hout. Hout is duurzaam en.s</p>
+							</div>
+						</article>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="footer__container">
+				<a href="mailto:info@eco-cabins.com" class="footer__mail">info@eco-cabins.com</a>
+				<div class="footer__logo">
+					<img src="img/logo.svg" alt="Logo">
+				</div>
+				<ul class="footer__menu menu-footer">
+					<li class="menu-footer__item">
+						<a href="#" class="menu-footer__link">Cookies</a>
+					</li>
+					<li class="menu-footer__item">
+						<a href="#" class="menu-footer__link">Privacybeleid</a>
+					</li>
+				</ul>
+			</div>
+		</footer>
+
+	</div>
+	<div id="video" aria-hidden="true" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close"></button>
+				<div class="popup__title">Duurzame tiny huisjes</div>
+				<div data-youtube-place class="popup__text"></div>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/app.min.js?_v=20230825215126"></script>
+</body>
+
+</html>
